@@ -20,7 +20,8 @@ app.use(logger('dev'));
 app.use(session({
   resave: false, // don't save session if unmodified
   saveUninitialized: false, // don't create session until something stored
-  secret: 'keyboard cat',
+  secret: process.env.SESSION_SECRET,
+  name: 'sessionId',
   store: new RedisStore
 }));
 

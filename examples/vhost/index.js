@@ -5,6 +5,7 @@
  */
 
 var express = require('../..');
+var escapeHtml = require('escape-html');
 var logger = require('morgan');
 var vhost = require('vhost');
 
@@ -27,7 +28,7 @@ main.get('/', function(req, res){
 });
 
 main.get('/:sub', function(req, res){
-  res.send('requested ' + req.params.sub);
+  res.send('requested ' + escapeHtml(req.params.sub));
 });
 
 // Redirect app

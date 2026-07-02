@@ -14,9 +14,10 @@ var app = express();
 
 // Populates req.session
 app.use(session({
+  name: 'sessionId',
   resave: false, // don't save session if unmodified
   saveUninitialized: false, // don't create session until something stored
-  secret: 'keyboard cat'
+  secret: process.env.SESSION_SECRET
 }));
 
 app.get('/', function(req, res){
